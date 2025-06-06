@@ -1,0 +1,76 @@
+#drop: db, table, column (permanent)
+drop table it;
+
+select * from cse;
+alter table cse drop column country;
+
+#delete: entire data or particular data (not permanent)
+use vit;
+CREATE TABLE Worker (
+	WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	FIRST_NAME CHAR(25),
+	LAST_NAME CHAR(25),
+	SALARY INT(15),
+	JOINING_DATE DATETIME,
+	DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Worker 
+	(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+		(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+		(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+		(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+		(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+		(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+		(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'),
+		(007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'),
+		(008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin');
+
+delete from worker where salary>600000;
+
+select * from worker;
+
+delete from worker where worker_id=001;
+delete from worker;
+
+#truncate : data (permanent)
+truncate table worker;
+
+delete from table1;
+create database 19may;
+create table table1(
+pname varchar(20),
+marks int);
+
+start transaction;
+insert into table1 values('p1',10);
+savepoint a11;
+
+insert into table1 values('p2',15);
+insert into table1 values('p3',20);
+commit;
+savepoint a22;
+
+delete from table1 where pname='p3';
+select * from table1;
+rollback to a22;
+
+select first_name as fname from worker;
+
+#operators:
+select first_name, department from worker where salary=500000;
+select first_name, department from worker where salary!=500000;
+select first_name, department from worker where salary>500000;
+select first_name, department from worker where salary<500000;
+select first_name, department from worker where salary>=500000;
+select first_name, department from worker where salary<=500000;
+
+select first_name, department from worker where salary>200000 AND department='HR';
+
+select first_name, department from worker where salary>200000 AND (department='HR' or department='Admin');
+
+select first_name, department from worker where (salary>100000 AND salary<300000) AND (department='HR' or department='Admin');
+
+select first_name from worker where worker_id in (1,2,5,8);
+
+select first_name from worker where salary=(select max(salary) from worker where worker_id %2=0 and (department='admin' or department='hr'));

@@ -1,0 +1,116 @@
+create database 20may;
+drop database 20may;
+show databases;
+show tables;
+use 20may;
+drop table category;
+create table category(
+c_id int primary key,
+c_name varchar(25),
+c_details varchar(25)
+);
+
+insert into category values(101,'electronics','asfdgfhg');
+insert into category values(102,'furniture','asfdgfhgwaedsf');
+
+drop table products;
+create table products(
+p_id int,
+p_name varchar(25),
+p_details varchar(25),
+c_id int,
+foreign key products(c_id) references category(c_id) on update cascade
+);
+
+insert into products values(1,'samsung s24 ultra','sdfg',101);
+insert into products values(2,'iphone 15 pro max','sdfgsadfg',101);
+
+delete from category where c_id=102;
+delete from category where c_id=101;
+
+update category set c_id=105 where c_name='electronics';
+select * from category;
+
+drop table users;
+CREATE TABLE users (
+    id INT,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+INSERT INTO users (id, name, email)
+VALUES (1, 'Alice', 'alice@example.com');
+
+INSERT INTO users (id, name, email)
+VALUES (2, 'Bob', NULL);
+
+INSERT INTO users (id, name, email)
+VALUES (3, 'Charlie', NULL);
+
+alter table users
+add constraint unique (email);
+
+INSERT INTO users (id, name, email)
+VALUES (4, 'David', 'alice@example.com');
+
+alter table users
+drop index email;
+select * from users;
+
+alter table users 
+modify email varchar(100) not null;
+
+delete from users where email is null;
+
+desc users;
+
+alter table users
+add primary key(id);
+
+alter table users
+drop primary key;
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT
+);
+INSERT INTO students (student_id, name, age)
+VALUES
+(1, 'Alice', 20),
+(2, 'Bob', 21),
+(3, 'Charlie', 22);
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(100),
+    student_id INT
+);
+
+INSERT INTO courses (course_id, course_name, student_id)
+VALUES
+(101, 'Math', 1),
+(102, 'Physics', 2),
+(103, 'Chemistry', 3);
+
+alter table courses
+add foreign key (student_id) references students(student_id);
+
+desc courses;
+alter table courses
+drop foreign key courses_ibfk_1;
+
+alter table students
+add check(age>=18 and age<=120);
+
+select * from students;
+insert into students values(4,'Balaji',14);
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    city VARCHAR(50) DEFAULT 'Salur'
+);
+
+insert into employees(emp_id,name) values(1,'Balaji');
+select * from employees;

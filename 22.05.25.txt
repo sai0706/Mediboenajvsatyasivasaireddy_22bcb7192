@@ -1,0 +1,49 @@
+use vit;
+show tables;
+
+select count(department),department from worker group by department order by count(department) desc limit 1;
+select sum(salary),department from worker group by department order by sum(salary) desc limit 1;
+
+select department,count(department) from worker group by department having count(department)>3;
+
+select department,sum(salary) from worker group by department order by sum(salary) desc limit 1 offset 1;
+
+select first_name,salary from worker where salary = (select max(salary) from worker);
+select salary from worker where salary = (select max(salary) from worker where department='hr');
+
+create table student(
+s_id int,
+s_name varchar(25)
+);
+
+insert into student values(101,'Jayanth'),(102,'Karthik'),(103,'Praveen'),(105,'Mahesh');
+
+create table address(
+s_id int,
+s_address varchar(25)
+);
+
+insert into address values(101,'Coimbatore'),(104,'Chennai'),(105,'Pune');
+
+select * from 
+student cross join address;
+
+select * from
+student inner join address where student.s_id=address.s_id;
+
+select * from
+student natural join address where student.s_id = address.s_id;
+
+select * from
+student left outer join address on(student.s_id=address.s_id);
+
+select * from
+student right outer join address on(student.s_id=address.s_id);
+
+SELECT DISTINCT Salary
+FROM Worker W1
+WHERE 4 = (
+    SELECT COUNT(DISTINCT Salary)
+    FROM Worker W2
+    WHERE W2.Salary > W1.Salary
+);

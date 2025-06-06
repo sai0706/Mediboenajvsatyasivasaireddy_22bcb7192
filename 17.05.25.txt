@@ -1,0 +1,78 @@
+show databases;
+create database vit;
+
+use vit;
+
+create table cse(
+regnum int,
+sname varchar(30),
+clgyear int,
+marks int
+);
+
+create table ece(
+regnum int,
+sname varchar(30),
+clgyear int,
+marks int
+);
+
+create table mech(
+regnum int,
+sname varchar(30),
+clgyear int,
+marks int
+);
+
+show tables;
+insert into cse values(1,'s1',1,80);
+insert into cse values(2,'s2',1,81);
+insert into cse values(3,'s3',1,82);
+insert into cse values(4,'s4',1,83);
+insert into cse values(5,'s5',1,84);
+insert into cse values(6,'s6',1,85);
+insert into cse values(7,'s7',1,86);
+insert into cse values(8,'s8',1,87);
+insert into cse values(9,'s9',1,88);
+insert into cse values(10,'s10',1,89);
+
+insert into ece values(1,'s1',2,90);
+insert into ece values(2,'s2',2,91);
+insert into ece values(3,'s3',2,92);
+insert into ece values(4,'s4',2,93);
+insert into ece values(5,'s5',2,94);
+insert into ece values(6,'s6',2,95);
+insert into ece values(7,'s7',2,96);
+insert into ece values(8,'s8',2,97);
+insert into ece values(9,'s9',2,98);
+insert into ece values(10,'s10',2,99);
+
+insert into mech values(1,'s1',3,70);
+insert into mech values(2,'s2',3,71);
+insert into mech values(3,'s3',3,72);
+insert into mech values(4,'s4',3,73);
+insert into mech values(5,'s5',3,74);
+insert into mech values(6,'s6',3,75);
+insert into mech values(7,'s7',3,76);
+insert into mech values(8,'s8',3,77);
+insert into mech values(9,'s9',3,78);
+insert into mech values(10,'s10',3,79);
+
+alter table cse add(
+address varchar(200),
+skills varchar(30)
+);
+
+desc cse;
+select * from cse;
+
+alter table cse drop column skills;
+alter table cse drop column address;
+
+alter table cse add(
+country varchar(50) default 'India'
+);
+
+update cse set marks=100 where regnum=1;
+
+update cse set marks=marks+50;
