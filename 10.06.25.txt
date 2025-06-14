@@ -1,0 +1,115 @@
+package connection;
+
+import org.bson.Document;
+
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
+
+public class deleteOne {
+	public static void main (String[] args) {
+		// Creating a Mongo client
+		MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+		MongoDatabase database = mongoClient.getDatabase("dummy");
+		
+		// Get the collection
+		MongoCollection<Document> collection = database.getCollection("Sample_collection");
+		
+		// Find all documents
+		collection.deleteOne (Filters.eq("First_Name","Mahesh"));
+		System. out.println ("Document deleted.");
+		System. out.println (" *** Documents *** ");
+		
+		// Select a particular document
+		FindIterable<Document> documents = collection.find();
+		
+		for (Document document : documents) {
+		System. out.println (document);
+		}
+	}
+}
+
+
+package connection;
+
+import org.bson.Document;
+
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Updates;
+
+public class find {
+
+	public static void main(String[] args) {
+			// Creating a Mongo client
+			MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+			MongoDatabase database = mongoClient.getDatabase ("dummy");
+			
+			// Get the collection
+			MongoCollection<Document> collection = database.getCollection("Sample_collection");
+
+			// Find two documents
+			FindIterable<Document> allDocuments = collection.find();
+			//FindIterable<Document> allDocuments = collection.find().skip(1).limit(2);
+//			for (Document document : allDocuments) {
+//			System. out.println (document);
+//
+//			}
+			int index=1;
+	        for (Document doc : allDocuments) {
+	            if (index % 2 == 0) {
+	                System.out.println("Remaining Document: " + doc);
+	            }
+	            index++;
+	        }
+	}
+
+}
+
+
+package connection;
+
+import org.bson.Document;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class sort {
+
+	public static void main(String[] args) {
+			// Creating a Mongo client
+			MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+			MongoDatabase database = mongoClient.getDatabase ("dummy");
+			
+			// Get the collection
+			MongoCollection<Document> collection = database.getCollection("Sample_collection");
+			System.out.println("***Descending Order***");
+
+			// Sort in Descending order
+			FindIterable<Document> allDocuments = collection.find().sort(new BasicDBObject("First_Name", -1));
+			for (Document document : allDocuments) {
+			    System.out.println(document);
+			}
+
+			System.out.println("***Ascending Order***");
+
+			// Sort in Ascending order
+			allDocuments = collection.find().sort(new BasicDBObject("First_Name", 1));
+			for (Document document : allDocuments) {
+			    System.out.println(document);
+			}
+
+	}
+}

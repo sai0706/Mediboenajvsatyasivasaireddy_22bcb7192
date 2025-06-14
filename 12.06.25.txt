@@ -1,0 +1,7 @@
+"C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db0 --port 27017 --bind_ip localhost
+
+
+"C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db1 --port 27018 --bind_ip localhost
+
+
+"C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db2 --port 27019 --bind_ip localhost

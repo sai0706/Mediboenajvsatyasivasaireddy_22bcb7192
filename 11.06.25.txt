@@ -1,0 +1,53 @@
+package connection;
+import static com.mongodb.client.model.Aggregates.group;
+
+import java.util.Arrays;
+
+import static com.mongodb.client.model.Accumulators.avg;
+import static com.mongodb.client.model.Accumulators.max;
+
+import org.bson.Document;
+import com.mongodb.client.AggregateIterable;
+
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoIterable;
+
+
+public class question {
+
+	public static void main(String[] args) {
+			MongoClient mongoclient = MongoClients.create("mongodb://localhost:27017");
+			MongoDatabase database = mongoclient.getDatabase("vit");
+			MongoCollection<Document> collection = database.getCollection("sales");
+			
+Query 1 : print 700-900
+MongoDb : db.products.find({price:{$gt:700,$lt:900}})
+
+	        Document priceRangeQuery = new Document("price", new Document("$gt", 700).append("$lt", 900));
+	        FindIterable<Document> products = collection.find(priceRangeQuery);
+	        for(Document product : products)
+	        	System.out.println(product);
+
+Query 2 : avg of price
+MongoDb: db.products.aggregate([{$group:{_id:null,average:{$avg:"$price"}}}])
+
+	        AggregateIterable<Document> result = collection.aggregate(
+	        		Arrays.asList(
+	        				group(null,avg("average","$price"))));
+	        for(Document doc : result){
+	        	System.out.println("Average : "+doc.getDouble("average"));
+	        }
+	        
+Query 3 : Each item which product is having more price
+MongoDb: db.sales.aggregate([{$group:{_id:"$item",maximum:{$max:"$price"}}}])
+
+	        AggregateIterable<Document> result = collection.aggregate(
+	        		Arrays.asList(
+	        				group("$item",max("maxPrice","$price"))));
+	        for(Document doc : result){
+	        	System.out.println("Item:"+doc.getString("_id")+",Maximum Price : "+doc.get("maxPrice"));
+	        }
