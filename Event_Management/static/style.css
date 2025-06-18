@@ -1,0 +1,541 @@
+@import url('https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #fffde7 0%, #e1f5fe 100%);
+    color: #263238;
+    padding: 32px;
+    min-height: 100vh;
+    line-height: 1.7;
+    transition: background 0.5s;
+}
+
+h1, h2 {
+    color: #ff9800;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 28px;
+    border-radius: 16px;
+    box-shadow: 0 6px 32px rgba(255, 152, 0, 0.08);
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(32px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* --- Enhanced Input Styles --- */
+.form-group {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.icon-input {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff9800;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.styled-input {
+    width: 100%;
+    padding: 12px 14px 12px 44px;
+    border: 2px solid #ffd600;
+    border-radius: 10px;
+    background: #fffde7;
+    font-size: 1.08rem;
+    color: #263238;
+    box-shadow: 0 2px 10px rgba(255, 193, 7, 0.07);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.styled-input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 0 2px #ffe082;
+    background-color: #fffbe7;
+}
+
+.styled-input[type="date"] {
+    padding-left: 14px;
+    background-image: none;
+}
+
+textarea.styled-input {
+    min-height: 70px;
+    resize: vertical;
+    padding-left: 14px;
+}
+
+/* --- Button Styles --- */
+.btn, button {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff9800 60%, #ffd600 100%);
+    color: #fff;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-right: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.10);
+    transition: background 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    outline: none;
+}
+
+.btn.small {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    margin-top: 6px;
+}
+
+.btn.primary { 
+    background: linear-gradient(90deg, #ff9800 60%, #ffd600 100%);
+    color: #fff !important;
+}
+
+.btn.info {
+    background: linear-gradient(90deg, #2979ff 60%, #64b5f6 100%);
+    color: #fff !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.btn.danger {
+    background: linear-gradient(90deg, #e53935 60%, #ff8a65 100%);
+    color: #fff !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.btn.success {
+    background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+    color: #fff !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.btn.cancel {
+    background: linear-gradient(90deg, #e53935 0%, #ff8a65 100%);
+    color: #fff !important;
+    margin-left: 8px;
+    font-weight: 600;
+    border: none;
+    transition: background 0.3s, box-shadow 0.3s;
+    opacity: 1;
+    display: inline-block;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.btn.cancel:hover {
+    background: linear-gradient(90deg, #ff8a65 0%, #e53935 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(229, 57, 53, 0.16);
+    opacity: 0.92;
+}
+
+.btn:hover, button:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 16px rgba(255, 152, 0, 0.16);
+}
+
+a {
+    color: #2979ff;
+    text-decoration: underline dotted;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #e53935;
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 24px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    background: #e1f5fe;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.07);
+    transition: background 0.2s;
+}
+
+ul li strong {
+    font-size: 1.1rem;
+    color: #ff9800;
+}
+
+ul li .date, ul li .location {
+    font-size: 0.98rem;
+    color: #2979ff;
+    margin-left: 6px;
+}
+
+ul li .desc {
+    color: #607d8b;
+    font-size: 0.97rem;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+/* --- Attendees Modern Styles --- */
+.attendees-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attendees-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(41, 121, 255, 0.12), 0 2px 8px rgba(255, 193, 7, 0.06);
+    padding: 38px 32px 32px 32px;
+    width: 100%;
+    max-width: 520px;
+    margin: 24px;
+    animation: fadeIn 0.8s;
+    position: relative;
+}
+
+.attendees-title {
+    font-size: 2rem;
+    color: #ff9800;
+    font-weight: 700;
+    margin-bottom: 26px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.attendees-title span {
+    color: #2979ff;
+    font-weight: 800;
+    margin-left: 7px;
+}
+
+.btn.modern-btn.yellow.back-btn {
+    background: linear-gradient(90deg, #ffd600 40%, #ff9800 100%);
+    color: #fff !important;
+    font-weight: 700;
+    margin-bottom: 24px;
+    border-radius: 10px;
+    min-width: 180px;
+    box-shadow: 0 2px 12px rgba(255, 193, 7, 0.10);
+    display: inline-block;
+}
+
+.attendees-list-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 10px;
+}
+
+.attendee-profile {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #e3f2fd 60%, #b2ebf2 100%);
+    border-radius: 13px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 6px rgba(41, 121, 255, 0.07);
+    transition: box-shadow 0.2s, transform 0.2s;
+    gap: 18px;
+}
+
+.attendee-profile:hover {
+    box-shadow: 0 4px 18px rgba(41, 121, 255, 0.13);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ffd600 0%, #ff9800 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.7rem;
+    margin-right: 10px;
+    box-shadow: 0 1px 6px rgba(255, 193, 7, 0.16);
+}
+
+.attendee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.attendee-name {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #263238;
+}
+
+.attendee-email, .attendee-phone {
+    font-size: 1.01rem;
+    color: #2979ff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.attendee-phone {
+    color: #43a047;
+}
+
+.no-attendees {
+    color: #90a4ae;
+    font-size: 1.08rem;
+    margin-top: 24px;
+    text-align: center;
+}
+
+/* --- Card and Modern Form Styles --- */
+.centered-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+}
+
+.card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(41, 121, 255, 0.08), 0 1.5px 6px rgba(229, 57, 53, 0.04);
+    padding: 38px 32px 32px 32px;
+    width: 100%;
+    max-width: 410px;
+    margin: 24px;
+    animation: fadeIn 0.8s;
+}
+
+.card-title {
+    font-size: 1.7rem;
+    color: #ff9800;
+    font-weight: 700;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modern-form {
+    width: 100%;
+}
+
+.form-floating {
+    position: relative;
+    margin-bottom: 26px;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 16px 14px 16px 14px;
+    font-size: 1.1rem;
+    border: 1.8px solid #bdbdbd;
+    border-radius: 8px;
+    background: #f6fafd;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(41, 121, 255, 0.03);
+}
+
+.modern-input:focus {
+    border-color: #2979ff;
+    background: #fff;
+    box-shadow: 0 0 0 2px #bbdefb;
+}
+
+.form-floating label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #90a4ae;
+    font-size: 1.1rem;
+    padding: 0 4px;
+    pointer-events: none;
+    transition: 0.2s;
+    opacity: 0.9;
+}
+
+.modern-input:focus + label,
+.modern-input:not(:placeholder-shown) + label,
+.modern-input:not(:empty) + label {
+    top: -12px;
+    left: 10px;
+    background: #fff;
+    color: #2979ff;
+    font-size: 0.97rem;
+    opacity: 1;
+    padding: 0 4px;
+}
+
+textarea.modern-input {
+    min-height: 64px;
+    resize: vertical;
+}
+
+.button-row {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.btn.modern-btn {
+    min-width: 140px;
+    padding: 14px 0;
+    font-size: 1.09rem;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 12px rgba(41, 121, 255, 0.06);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    color: #fff !important;
+    text-align: center;
+    outline: none;
+}
+
+.btn.modern-btn.blue {
+    background: linear-gradient(90deg, #2979ff 40%, #64b5f6 100%);
+}
+
+.btn.modern-btn.green {
+    background: linear-gradient(90deg, #43a047 40%, #66bb6a 100%);
+}
+
+.btn.modern-btn.red {
+    background: linear-gradient(90deg, #e53935 40%, #ff8a65 100%);
+}
+
+.btn.modern-btn.yellow.back-btn {
+    background: linear-gradient(90deg, #ffd600 40%, #ff9800 100%);
+}
+
+.btn.modern-btn:hover {
+    filter: brightness(1.09);
+    box-shadow: 0 4px 18px rgba(41, 121, 255, 0.13);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* --- Flash messages --- */
+.success {
+    background: #d0f8ce;
+    color: #388e3c;
+    border-left: 5px solid #388e3c;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.info {
+    background: #e3f2fd;
+    color: #2979ff;
+    border-left: 5px solid #2979ff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.danger {
+    background: #ffebee;
+    color: #e53935;
+    border-left: 5px solid #e53935;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+/* --- Responsive design --- */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+    .container {
+        padding: 18px 8px;
+    }
+    h1, h2 {
+        font-size: 1.4rem;
+    }
+    .btn, button {
+        width: 100%;
+        padding: 12px 0;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+    .btn.cancel {
+        margin-left: 0;
+    }
+    .card {
+        padding: 18px 6px 22px 6px;
+        max-width: 98vw;
+    }
+    .button-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .attendees-card {
+        padding: 16px 4px 12px 4px;
+        max-width: 99vw;
+    }
+    .attendee-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+        padding: 12px 8px;
+    }
+    .avatar {
+        margin-bottom: 6px;
+        margin-right: 0;
+    }
+}
+
+::-webkit-input-placeholder { color: #90a4ae; }
+::-moz-placeholder { color: #90a4ae; }
+:-ms-input-placeholder { color: #90a4ae; }
+::placeholder { color: #90a4ae; }
