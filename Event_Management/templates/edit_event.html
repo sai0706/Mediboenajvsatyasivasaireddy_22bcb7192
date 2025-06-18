@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Event</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="centered-container">
+        <div class="card">
+            <h2 class="card-title"><i class="fa fa-edit"></i> Edit Event</h2>
+            <form method="POST" class="modern-form">
+                <div class="form-floating">
+                    <input type="text" name="name" id="eventName" class="modern-input" value="{{ event.name }}" required>
+                    <label for="eventName">Event Name</label>
+                </div>
+                <div class="form-floating">
+                    <input type="date" name="date" id="eventDate" class="modern-input" value="{{ event.date }}" required>
+                    <label for="eventDate">Date</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="location" id="eventLocation" class="modern-input" value="{{ event.location }}" required>
+                    <label for="eventLocation">Location</label>
+                </div>
+                <div class="form-floating">
+                    <textarea name="description" id="eventDesc" class="modern-input" required>{{ event.description }}</textarea>
+                    <label for="eventDesc">Description</label>
+                </div>
+                <div class="button-row">
+                    <button type="submit" class="btn modern-btn blue"><i class="fa fa-save"></i> Update Event</button>
+                    <a href="{{ url_for('home') }}" class="btn modern-btn red">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

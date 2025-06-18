@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="centered-container">
+        <div class="card">
+            <h2 class="card-title"><i class="fa fa-user-plus"></i> Register for {{ event.name }}</h2>
+            <form method="POST" class="modern-form">
+                <div class="form-floating">
+                    <input type="text" name="name" id="regName" class="modern-input" placeholder=" " required>
+                    <label for="regName">Your Name</label>
+                </div>
+                <div class="form-floating">
+                    <input type="email" name="email" id="regEmail" class="modern-input" placeholder=" " required>
+                    <label for="regEmail">Your Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="phone" id="regPhone" class="modern-input" placeholder=" " required>
+                    <label for="regPhone">Your Phone Number</label>
+                </div>
+                <div class="button-row">
+                    <button type="submit" class="btn modern-btn green"><i class="fa fa-check"></i> Register</button>
+                    <a href="{{ url_for('home') }}" class="btn modern-btn red">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
